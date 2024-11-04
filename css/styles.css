@@ -7,19 +7,52 @@
 body {
   background: #333;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 40px;
+}
+
+.display-container {
+  color: whitesmoke;
+  font-size: 2rem;
+  width: 600px;
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  padding: 10px 20px;
+}
+
+.display {
+  flex: 2;
+}
+
+.equation {
+  flex: 1;
+  align-self: flex-start;
+  color: whitesmoke;
+  font-size: 1.2rem;
+  /* text-align: right; */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
 }
 
 .digits {
   display: flex;
   justify-content: center;
   flex-wrap: wrap-reverse;
-  width: 450px;
 }
 
 .digits button,
 .operators button {
+  font-size: 1.3rem;
   width: 150px;
   height: 50px;
 }
@@ -27,5 +60,4 @@ body {
 .operators {
   display: flex;
   flex-direction: column;
-  width: 150px;
 }
