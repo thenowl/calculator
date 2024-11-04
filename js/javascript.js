@@ -40,8 +40,6 @@ function populateDisplay(digit) {
   if (num1 === result && operator === null) {
     display.innerText = "";
     num1 = null;
-  } else if (operator !== null) {
-    display.innerText = "";
   }
 
   switch (digit.id) {
@@ -99,27 +97,22 @@ function getOperator(operatorChoice) {
   switch (operatorChoice.id) {
     case "divide":
       operator = "/";
-      display.innerHTML = "&div;";
       equation.innerHTML += " &div; ";
       break;
     case "multiply":
       operator = "*";
-      display.innerHTML = "&times;";
       equation.innerHTML += " &times; ";
       break;
     case "subtract":
       operator = "-";
-      display.innerHTML = "&minus;";
       equation.innerHTML += " &minus; ";
       break;
     case "add":
       operator = "+";
-      display.innerHTML = "&plus;";
       equation.innerHTML += " &plus; ";
       break;
     case "equals":
       num2 = getInput();
-      // console.log(num2);
       result = operate(operator, num1, num2);
       display.innerText = result;
       equation.innerHTML += num2 + " &equals; " + result;
