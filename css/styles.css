@@ -22,11 +22,12 @@ body {
   justify-content: space-between;
   align-items: center;
   border: 2px solid black;
-  padding: 10px 20px;
+  padding: 15px 30px;
 }
 
 .display {
   flex: 2;
+  text-align: right;
 }
 
 .equation {
@@ -34,7 +35,6 @@ body {
   align-self: flex-start;
   color: whitesmoke;
   font-size: 1.2rem;
-  /* text-align: right; */
 }
 
 .button-container {
