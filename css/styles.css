@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,59 +7,94 @@
 }
 
 body {
-  background: #333;
+  background: rgb(150, 150, 150);
   display: flex;
+  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
+}
+
+.calculator-container {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px #333;
 }
 
 .display-container {
-  color: whitesmoke;
-  font-size: 2rem;
-  width: 600px;
+  font-family: Silkscreen, sans-serif;
+  color: rgba(32, 32, 32, 0.8);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  background: radial-gradient(rgb(61, 148, 61), rgb(3, 41, 3));
+  font-size: 150%;
   min-height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid black;
-  padding: 15px 30px;
+  border: 6px solid black;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 15px 20px;
 }
 
 .display {
-  flex: 2;
+  flex: 1;
   text-align: right;
 }
 
 .equation {
   flex: 1;
   align-self: flex-start;
-  color: whitesmoke;
   font-size: 1.2rem;
 }
 
 .button-container {
+  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 600px;
+  border: 5px solid black;
+  border-radius: 0 0 10px 10px;
 }
 
 .digits {
+  flex: 3;
   display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
-  flex-wrap: wrap-reverse;
+}
+
+.digits div {
+  display: flex;
 }
 
 .digits button,
 .operators button {
-  font-size: 1.3rem;
-  width: 150px;
-  height: 50px;
+  background: #333;
+  color: lightgrey;
+  flex: 1;
+  font-size: 100%;
+  max-width: 100px;
+  min-width: 50px;
+  min-height: 50px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.digits button:active,
+.operators button:active {
+  opacity: 0.7;
 }
 
 .operators {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+#equals {
+  background: orange;
+  color: black;
 }

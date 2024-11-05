@@ -32,6 +32,8 @@ function operate(operation, operand1, operand2) {
   if (operation === "*") result = multiply(operand1, operand2);
   if (operation === "/") result = divide(operand1, operand2);
 
+  result = Math.round(result * 100000000) / 100000000;
+
   display.innerText = result;
   equation.innerHTML += num2 + " &equals; ";
   num1 = result;
@@ -67,6 +69,8 @@ function populateDisplay(digit) {
       : (equation.innerHTML += " &div; ");
     result = 0;
   }
+
+  if (display.innerText.length >= 7) return;
 
   switch (digit.id) {
     case "zero":
