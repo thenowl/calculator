@@ -40,58 +40,6 @@ function operate(operation, operand1, operand2) {
 }
 
 function populateDisplay(digit) {
-  // if (
-  //   typeof parseFloat(digit) === "number" ||
-  //   digit === "," ||
-  //   digit === "." ||
-  //   digit === "%" ||
-  //   digit === "Backspace" ||
-  //   digit === "Escape"
-  // ) {
-  //   switch (digit) {
-  //     case "0":
-  //     case "1":
-  //     case "2":
-  //     case "3":
-  //     case "4":
-  //     case "5":
-  //     case "6":
-  //     case "7":
-  //     case "8":
-  //     case "9":
-  //       display.innerText += digit;
-  //       break;
-  //     case ".":
-  //     case ",":
-  //       if (display.innerText.includes(".")) break;
-  //       if (display.innerText.split("").length === 0) {
-  //         display.innerText += "0.";
-  //         break;
-  //       }
-  //       display.innerText += ".";
-  //       break;
-  //     case "Escape":
-  //       display.innerText = "";
-  //       equation.innerText = "";
-  //       num1 = null;
-  //       num2 = null;
-  //       operator = null;
-  //       break;
-  //     case "Backspace":
-  //       let temp = display.innerText.split("");
-  //       temp.pop();
-  //       display.innerText = temp.join("");
-  //       break;
-  //     case "%":
-  //       if (num1) {
-  //         display.innerText *= num1 / 100;
-  //         break;
-  //       }
-  //       display.innerText /= 100;
-  //       break;
-  //   }
-  // }
-
   // Overwrite "0" if only number on screen with no
 
   if (display.innerText === "0") display.innerText = "";
@@ -119,8 +67,8 @@ function populateDisplay(digit) {
       : (equation.innerHTML += " &div; ");
     result = 0;
   }
-  console.log(digit);
-  switch (digit.id || digit) {
+
+  switch (digit.id) {
     case "zero":
     case "one":
     case "two":
