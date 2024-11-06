@@ -32,6 +32,7 @@ function operate(operation, operand1, operand2) {
   if (operation === "*") result = multiply(operand1, operand2);
   if (operation === "/") result = divide(operand1, operand2);
 
+  // Rounds to 8 decimals:
   result = Math.round(result * 100000000) / 100000000;
 
   display.innerText = result;
@@ -126,11 +127,11 @@ function getInput() {
 }
 
 function getOperator(operatorChoice) {
-  // Log input into variable num1:
-
   // Prevents consecutive operators in chaining-mode:
 
   if (result && num1 && operator) return;
+
+  // Log input into variable num1:
 
   if (!num1) {
     num1 = getInput();
@@ -144,45 +145,55 @@ function getOperator(operatorChoice) {
 
   switch (operatorChoice.id) {
     case "divide":
-      // Avoid consecutive operators:
-      // Chaining operators:
+      // Operators chaining-mode:
       if (operator && num1 && num2) {
         operate(operator, num1, num2);
         operator = "/";
         break;
       }
+      // Avoid consecutive operators:
       if (operator) break;
+      //Standard operator:
       operator = "/";
       equation.innerHTML += " &div; ";
       break;
     case "multiply":
+      // Operators chaining-mode:
       if (operator && num1 && num2) {
         operate(operator, num1, num2);
         operator = "*";
         break;
       }
+      // Avoid consecutive operators:
       if (operator) break;
+      //Standard operator:
       operator = "*";
       equation.innerHTML += " &times; ";
       break;
     case "subtract":
+      // Operators chaining-mode:
       if (operator && num1 && num2) {
         operate(operator, num1, num2);
         operator = "-";
         break;
       }
+      // Avoid consecutive operators:
       if (operator) break;
+      //Standard operator:
       operator = "-";
       equation.innerHTML += " &minus; ";
       break;
     case "add":
+      // Operators chaining-mode:
       if (operator && num1 && num2) {
         console.log(num2);
         operate(operator, num1, num2);
         operator = "+";
         break;
       }
+      // Avoid consecutive operators:
       if (operator) break;
+      //Standard operator:
       operator = "+";
       equation.innerHTML += " &plus; ";
       break;
