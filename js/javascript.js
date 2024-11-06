@@ -60,7 +60,7 @@ function populateDisplay(digit) {
 
   // "Chaining operations" handler:
 
-  if (num1 === result && operator) {
+  if (result && num1 === result && operator) {
     display.innerText = "";
     equation.innerText = num1;
     operator === "+"
@@ -71,6 +71,10 @@ function populateDisplay(digit) {
       ? (equation.innerHTML += " &times; ")
       : (equation.innerHTML += " &div; ");
     result = null; //unlocks if double-pressing operator in chaining-mode
+  }
+
+  if (num1) {
+    display.innerText = "";
   }
 
   if (display.innerText.length >= 7) return;
@@ -135,7 +139,6 @@ function getOperator(operatorChoice) {
 
   if (!num1) {
     num1 = getInput();
-    display.innerText = "";
     equation.innerText = num1;
   }
 
