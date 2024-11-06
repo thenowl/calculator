@@ -45,7 +45,10 @@ function operate(operation, operand1, operand2) {
 function populateDisplay(digit) {
   // Overwrite "0" if only number on screen with no
 
-  if (display.innerText === "0") display.innerText = "";
+  if (display.innerText === "0") {
+    console.log("yay");
+    display.innerText = "";
+  }
 
   // Clear calculation if user enters new number after result-display:
 
@@ -71,10 +74,6 @@ function populateDisplay(digit) {
       ? (equation.innerHTML += " &times; ")
       : (equation.innerHTML += " &div; ");
     result = null; //unlocks if double-pressing operator in chaining-mode
-  }
-
-  if (num1) {
-    display.innerText = "";
   }
 
   if (display.innerText.length >= 7) return;
@@ -139,6 +138,7 @@ function getOperator(operatorChoice) {
 
   if (!num1) {
     num1 = getInput();
+    display.innerText = "";
     equation.innerText = num1;
   }
 
