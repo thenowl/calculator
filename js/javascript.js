@@ -7,7 +7,7 @@ const equation = document.querySelector("#equation");
 let num1 = null;
 let num2 = null;
 let operator = null;
-let result = 0;
+let result = null;
 
 function add(operand1, operand2) {
   return operand1 + operand2;
@@ -48,11 +48,13 @@ function populateDisplay(digit) {
 
   // Clear calculation if user enters new number after result-display:
 
-  if (num1 === result && !operator) {
+  if (result && num1 === result && !operator) {
     display.innerText = "";
     equation.innerText = "";
     num1 = null;
-    result = 0;
+    num2 = null;
+    operator = null;
+    result = null;
   }
 
   // "Chaining operations" handler:
@@ -67,7 +69,7 @@ function populateDisplay(digit) {
       : operator === "*"
       ? (equation.innerHTML += " &times; ")
       : (equation.innerHTML += " &div; ");
-    result = 0;
+    result = null; //unlocks if double-pressing operator in chaining-mode
   }
 
   if (display.innerText.length >= 7) return;
@@ -126,13 +128,15 @@ function getInput() {
 function getOperator(operatorChoice) {
   // Log input into variable num1:
 
-  if (!num1 && !operator) {
+  // Prevents consecutive operators in chaining-mode:
+
+  if (result && num1 && operator) return;
+
+  if (!num1) {
     num1 = getInput();
     display.innerText = "";
     equation.innerText = num1;
   }
-
-  if (num1 === result) equation.innerText = num1;
 
   // Populate num2 if num1 is populated and operator has been chosen:
 
@@ -140,13 +144,13 @@ function getOperator(operatorChoice) {
 
   switch (operatorChoice.id) {
     case "divide":
+      // Avoid consecutive operators:
       // Chaining operators:
       if (operator && num1 && num2) {
         operate(operator, num1, num2);
         operator = "/";
         break;
       }
-      // Avoid consecutive operators:
       if (operator) break;
       operator = "/";
       equation.innerHTML += " &div; ";
@@ -173,6 +177,7 @@ function getOperator(operatorChoice) {
       break;
     case "add":
       if (operator && num1 && num2) {
+        console.log(num2);
         operate(operator, num1, num2);
         operator = "+";
         break;
