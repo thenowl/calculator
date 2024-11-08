@@ -201,7 +201,7 @@ function getOperator(operatorChoice) {
       break;
     case "equals":
       // Avoid "equals" if no operator or value for num2 is set:
-      if (!num1 || !operator || num2 === null) return;
+      if (!num1 || !operator || !num2) break;
       operate(operator, num1, num2);
       break;
   }
