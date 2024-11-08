@@ -136,7 +136,7 @@ function getOperator(operatorChoice) {
 
   // Log input into variable num1:
 
-  if (!num1) {
+  if (!num1 && operatorChoice.id !== "equals") {
     num1 = getInput();
     display.innerText = "";
     equation.innerText = num1;
@@ -189,7 +189,6 @@ function getOperator(operatorChoice) {
     case "add":
       // Operators chaining-mode:
       if (operator && num1 && num2) {
-        console.log(num2);
         operate(operator, num1, num2);
         operator = "+";
         break;
@@ -202,7 +201,7 @@ function getOperator(operatorChoice) {
       break;
     case "equals":
       // Avoid "equals" if no operator or value for num2 is set:
-      if (!operator || num2 === null) break;
+      if (!num1 || !operator || num2 === null) return;
       operate(operator, num1, num2);
       break;
   }
